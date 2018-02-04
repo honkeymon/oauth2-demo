@@ -73,6 +73,7 @@ oauth2根据使用场景不同，分成了4种模式
 暴露一个商品查询接口，后续不做安全限制，一个订单查询接口，后续添加访问控制。
 
 ## 配置资源服务器和授权服务器
+
 由于是两个oauth2的核心配置，我们放到一个配置类中。
 为了方便下载代码直接运行，我这里将客户端信息放到了内存中，生产中可以配置到数据库中。token的存储一般选择使用redis，一是性能比较好，二是自动过期的机制，符合token的特性。
 	
@@ -264,9 +265,11 @@ http://localhost:8080/oauth/token?grant_type=client_credentials&scope=select&cli
 
 在配置中，我们已经配置了对order资源的保护，如果直接访问：
 
-```http://localhost:8080/order/1
+```
+http://localhost:8080/order/1
 ```
 会得到这样的响应：  
+
 ```
 {"error":"unauthorized","error_description":"Full authentication is required to access this resource"}
 ```
@@ -278,6 +281,7 @@ http://localhost:8080/oauth/token?grant_type=client_credentials&scope=select&cli
 http://localhost:8080/product/1
 ```
 则可以直接访问，得到响应
+
 ```
 product id : 1
 ```
@@ -311,9 +315,11 @@ order id : 1
 我们重点关注一下debug后，对资源访问时系统记录的用户认证信息，可以看到如下的debug信息
 
 password模式：
+
 ![password模式](http://img.blog.csdn.net/20170808145230975?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzgxNTU0Ng==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 client模式：
+
 ![client模式](http://img.blog.csdn.net/20170808145304794?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzgxNTU0Ng==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 和我们的配置是一致的，仔细看可以发现两者的身份有些许的不同。想要查看更多的debug信息，可以选择下载demo代码自己查看，为了方便读者调试和验证，我去除了很多复杂的特性，基本实现了一个最简配置，涉及到数据库的地方也尽量配置到了内存中，这点记住在实际使用时一定要修改。
@@ -321,6 +327,7 @@ client模式：
 到这儿，一个简单的oauth2入门示例就完成了，一个简单的配置教程。token的工作原理是什么，它包含了哪些信息？spring内部如何对身份信息进行验证？以及上述的配置到底影响了什么？这些内容会放到后面的文章中去分析。
 
 ## 示例代码下载
+
 全部的代码可以在我的github上进行下载，项目使用springboot+maven构建：
 https://github.com/lexburner/oauth2-demo
 
