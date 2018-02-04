@@ -311,24 +311,3 @@ http://localhost:8080/order/1?access_token=56465b41-429d-436c-ad8d-613d476ff322
 ```
 order id : 1
 ```
-
-我们重点关注一下debug后，对资源访问时系统记录的用户认证信息，可以看到如下的debug信息
-
-password模式：
-
-![password模式](http://img.blog.csdn.net/20170808145230975?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzgxNTU0Ng==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
-
-client模式：
-
-![client模式](http://img.blog.csdn.net/20170808145304794?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzgxNTU0Ng==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
-
-和我们的配置是一致的，仔细看可以发现两者的身份有些许的不同。想要查看更多的debug信息，可以选择下载demo代码自己查看，为了方便读者调试和验证，我去除了很多复杂的特性，基本实现了一个最简配置，涉及到数据库的地方也尽量配置到了内存中，这点记住在实际使用时一定要修改。
-
-到这儿，一个简单的oauth2入门示例就完成了，一个简单的配置教程。token的工作原理是什么，它包含了哪些信息？spring内部如何对身份信息进行验证？以及上述的配置到底影响了什么？这些内容会放到后面的文章中去分析。
-
-## 示例代码下载
-
-全部的代码可以在我的github上进行下载，项目使用springboot+maven构建：
-https://github.com/lexburner/oauth2-demo
-
-
