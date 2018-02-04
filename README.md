@@ -263,6 +263,8 @@ http://localhost:8080/oauth/token?grant_type=client_credentials&scope=select&cli
 {"access_token":"56465b41-429d-436c-ad8d-613d476ff322","token_type":"bearer","expires_in":25074,"scope":"select"}
 ```
 
+---
+
 在配置中，我们已经配置了对order资源的保护，如果直接访问：
 
 ```
